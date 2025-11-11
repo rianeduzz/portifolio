@@ -297,11 +297,35 @@
             border-radius: 4px;
         }
 
-        /* Projetos */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        /* Projetos - Carrossel */
+        .projects-carousel {
+            position: relative;
+            overflow: hidden;
+            padding: 1rem 0;
+        }
+
+        .carousel-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
             gap: 2rem;
+            padding: 1rem 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--secondary-color) var(--card-bg);
+        }
+
+        .carousel-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .carousel-container::-webkit-scrollbar-track {
+            background: var(--card-bg);
+            border-radius: 4px;
+        }
+
+        .carousel-container::-webkit-scrollbar-thumb {
+            background-color: var(--secondary-color);
+            border-radius: 4px;
         }
 
         .project-card {
@@ -313,6 +337,8 @@
             border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
+            min-width: 320px;
+            flex-shrink: 0;
         }
 
         .project-card:hover,
@@ -370,6 +396,43 @@
         .project-link:hover,
         .project-link:focus {
             color: var(--text-color);
+        }
+
+        .youtube-link {
+            color: #ff0000;
+        }
+
+        .youtube-link:hover,
+        .youtube-link:focus {
+            color: #ff3333;
+        }
+
+        /* Controles do carrossel */
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-btn {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-btn:hover,
+        .carousel-btn:focus {
+            background-color: var(--secondary-color);
+            transform: scale(1.1);
         }
 
         /* Contato */
@@ -763,60 +826,86 @@
     </section>
 
     <!-- Seção Projetos -->
-   <section id="projects">
-    <div class="container">
-        <h2 class="section-title">Meus Projetos</h2>
-        <div class="projects-grid">
-            <!-- Projeto 1 - Ryce -->
-            <div class="project-card">
-                <div class="project-header">
-                    <!-- Ícone removido -->
-                </div>
-                <div class="project-info">
-                    <h3>Ryce</h3>
-                    <p>Plataforma de aluguel de carros desenvolvida com tecnologias modernas. Sistema completo de reservas, pagamentos e gestão de frota.</p>
-                    <div class="project-links">
-                        <a href="https://github.com/YagoRGM/Ryce.git" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i> Código
-                        </a>
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Meus Projetos</h2>
+            <div class="projects-carousel">
+                <div class="carousel-container" id="carousel">
+                    <!-- Projeto 1 - Ryce -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <!-- Ícone removido -->
+                        </div>
+                        <div class="project-info">
+                            <h3>Ryce</h3>
+                            <p>Plataforma de aluguel de carros desenvolvida com tecnologias modernas. Sistema completo de reservas, pagamentos e gestão de frota.</p>
+                            <div class="project-links">
+                                <a href="https://github.com/YagoRGM/Ryce.git" class="project-link" target="_blank">
+                                    <i class="fab fa-github"></i> Código
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- Projeto 2 - Senai Tech News -->
-            <div class="project-card">
-                <div class="project-header">
-                    <!-- Ícone removido -->
-                </div>
-                <div class="project-info">
-                    <h3>Senai Tech News</h3>
-                    <p>Portal de notícias sobre o mundo tecnológico, com matérias atualizadas e explicações sobre como funciona o curso de Desenvolvimento de Sistemas do SENAI Taubaté.</p>
-                    <div class="project-links">
-                        <a href="https://github.com/rianeduzz/SenaiTechNews.git" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i> Código
-                        </a>
+                    <!-- Projeto 2 - Senai Tech News -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <!-- Ícone removido -->
+                        </div>
+                        <div class="project-info">
+                            <h3>Senai Tech News</h3>
+                            <p>Portal de notícias sobre o mundo tecnológico, com matérias atualizadas e explicações sobre como funciona o curso de Desenvolvimento de Sistemas do SENAI Taubaté.</p>
+                            <div class="project-links">
+                                <a href="https://github.com/rianeduzz/SenaiTechNews.git" class="project-link" target="_blank">
+                                    <i class="fab fa-github"></i> Código
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- Projeto 3 - NexusStore -->
-            <div class="project-card">
-                <div class="project-header">
-                    <!-- Ícone removido -->
-                </div>
-                <div class="project-info">
-                    <h3>NexusStore</h3>
-                    <p>Marketplace completo com múltiplos vendedores. Sistema de avaliações, carrinho de compras e integração com gateways de pagamento.</p>
-                    <div class="project-links">
-                        <a href="https://github.com/rianeduzz/NexusStore.git" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i> Código
-                        </a>
+                    <!-- Projeto 3 - NexusStore -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <!-- Ícone removido -->
+                        </div>
+                        <div class="project-info">
+                            <h3>NexusStore</h3>
+                            <p>Marketplace completo com múltiplos vendedores. Sistema de avaliações, carrinho de compras e integração com gateways de pagamento.</p>
+                            <div class="project-links">
+                                <a href="https://github.com/rianeduzz/NexusStore.git" class="project-link" target="_blank">
+                                    <i class="fab fa-github"></i> Código
+                                </a>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- Projeto 4 - Nova Jornada -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <!-- Ícone removido -->
+                        </div>
+                        <div class="project-info">
+                            <h3>Nova Jornada</h3>
+                            <p>Video pitch desenvolvido para o Projeto Empreendedor do SENAC. Apresenta uma solução inovadora para conectar pessoas a oportunidades de trabalho remoto.</p>
+                            <div class="project-links">
+                                <a href="https://youtu.be/OR6Mj1679TU?si=70YtETcuXqCIYo2z" class="project-link youtube-link" target="_blank">
+                                    <i class="fab fa-youtube"></i> Assistir Vídeo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn" id="prevBtn" aria-label="Projetos anteriores">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn" id="nextBtn" aria-label="Próximos projetos">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Seção Contato -->
     <section id="contact">
@@ -975,6 +1064,28 @@
                 if (link.getAttribute('href') === `#${current}`) {
                     link.classList.add('active');
                 }
+            });
+        });
+
+        // Controles do carrossel de projetos
+        const carousel = document.getElementById('carousel');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        // Largura de um card de projeto + gap
+        const cardWidth = 320 + 32; // 320px + 32px de gap
+        
+        prevBtn.addEventListener('click', () => {
+            carousel.scrollBy({
+                left: -cardWidth,
+                behavior: 'smooth'
+            });
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            carousel.scrollBy({
+                left: cardWidth,
+                behavior: 'smooth'
             });
         });
     </script>
